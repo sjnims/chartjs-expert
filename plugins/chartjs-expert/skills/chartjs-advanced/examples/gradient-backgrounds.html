@@ -190,17 +190,39 @@
     });
 
     // 4. Radial Gradient (Doughnut)
+    const doughnutColors = [
+      { inner: 'rgba(255, 99, 132, 1)', outer: 'rgba(255, 99, 132, 0.3)' },
+      { inner: 'rgba(54, 162, 235, 1)', outer: 'rgba(54, 162, 235, 0.3)' },
+      { inner: 'rgba(255, 206, 86, 1)', outer: 'rgba(255, 206, 86, 0.3)' }
+    ];
+
     new Chart(document.getElementById('radialGradient'), {
       type: 'doughnut',
       data: {
         labels: ['Red', 'Blue', 'Yellow'],
         datasets: [{
           data: [300, 150, 100],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.8)',
-            'rgba(54, 162, 235, 0.8)',
-            'rgba(255, 206, 86, 0.8)'
-          ],
+          backgroundColor: function(context) {
+            const chart = context.chart;
+            const { ctx, chartArea } = chart;
+            if (!chartArea) return null;
+
+            const centerX = (chartArea.left + chartArea.right) / 2;
+            const centerY = (chartArea.top + chartArea.bottom) / 2;
+            const radius = Math.min(
+              chartArea.right - chartArea.left,
+              chartArea.bottom - chartArea.top
+            ) / 2;
+
+            const colors = doughnutColors[context.dataIndex];
+            const gradient = ctx.createRadialGradient(
+              centerX, centerY, 0,
+              centerX, centerY, radius
+            );
+            gradient.addColorStop(0, colors.inner);
+            gradient.addColorStop(1, colors.outer);
+            return gradient;
+          },
           borderWidth: 2,
           borderColor: '#fff'
         }]
