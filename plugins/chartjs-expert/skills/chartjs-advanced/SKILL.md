@@ -435,6 +435,13 @@ options: {
 
 ## Additional Resources
 
-- See `examples/gradient-backgrounds.html` for gradient pattern library
-- See `examples/custom-chart-type.html` for complete custom controller example
-- See `references/controller-api.md` for chart controller API documentation
+### Examples
+
+- `examples/gradient-backgrounds.html` - Gradient pattern library (vertical, horizontal, radial, diagonal)
+- `examples/custom-chart-type.html` - Complete custom controller example (DerivedBubble)
+
+### References
+
+- `references/controller-api.md` - Chart controller API and TypeScript declarations
+- `references/scale-api.md` - Scale API for custom axis types
+- `references/performance-optimization.md` - Comprehensive performance tuning guide

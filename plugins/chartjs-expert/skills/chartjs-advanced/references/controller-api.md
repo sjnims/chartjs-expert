@@ -157,14 +157,76 @@ Chart.register(Chart.MyController);
 
 ## TypeScript Support
 
-Add type declarations for custom chart types:
+Add type declarations for custom chart types using declaration merging.
+
+### Extending ChartTypeRegistry
+
+Create a `.d.ts` file to register your custom chart type:
 
 ```typescript
+// custom-charts.d.ts
 import {ChartTypeRegistry} from 'chart.js';
 
 declare module 'chart.js' {
   interface ChartTypeRegistry {
-    myCustomType: ChartTypeRegistry['bar']  // Extend existing type
+    // Extend existing type (inherits all config options)
+    derivedBubble: ChartTypeRegistry['bubble'];
+
+    // Or define custom type with specific options
+    customBar: {
+      chartOptions: ChartTypeRegistry['bar']['chartOptions'];
+      datasetOptions: ChartTypeRegistry['bar']['datasetOptions'] & {
+        customOption?: boolean;
+      };
+      defaultDataPoint: ChartTypeRegistry['bar']['defaultDataPoint'];
+      metaExtensions: ChartTypeRegistry['bar']['metaExtensions'];
+      parsedDataType: ChartTypeRegistry['bar']['parsedDataType'];
+      scales: ChartTypeRegistry['bar']['scales'];
+    };
+  }
+}
+```
+
+### Usage with TypeScript
+
+```typescript
+import {Chart, ChartConfiguration} from 'chart.js';
+import './custom-charts.d.ts';
+
+// TypeScript now recognizes 'derivedBubble' as valid type
+const config: ChartConfiguration<'derivedBubble'> = {
+  type: 'derivedBubble',
+  data: {
+    datasets: [{
+      data: [{x: 10, y: 20, r: 5}]
+    }]
+  }
+};
+
+const chart = new Chart(ctx, config);
+```
+
+### Type-Safe Custom Options
+
+For controllers with custom options:
+
+```typescript
+// Define custom options interface
+interface CustomBarOptions {
+  customOption?: boolean;
+  boxStrokeStyle?: string;
+}
+
+// Access options in controller
+class CustomBarController extends BarController {
+  draw() {
+    super.draw();
+
+    // TypeScript knows about customOption
+    const opts = this.options as CustomBarOptions;
+    if (opts.customOption) {
+      // Custom drawing logic
+    }
   }
 }
 ```
