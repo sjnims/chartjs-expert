@@ -1,8 +1,7 @@
 ## Description
 
 <!-- Provide a clear and concise description of your changes -->
-<!-- Reference: https://getbootstrap.com/docs/5.3/ -->
-<!-- Contributing guide: See CONTRIBUTING.md -->
+<!-- Reference: https://www.chartjs.org/docs/4.5.1/ -->
 
 ## Type of Change
 
@@ -20,13 +19,13 @@
 
 <!-- Mark all that apply -->
 
-- [ ] Skills (`plugins/chartjs-expert/skills/bootstrap-*`)
+- [ ] Skills (`plugins/chartjs-expert/skills/chartjs-*`)
 - [ ] Agent (`chartjs-expert`)
-- [ ] Commands (`/chartjs-expert:component`)
-- [ ] Examples (HTML/CSS/JS/ERB samples in `examples/` folders)
+- [ ] Commands (`/chartjs:component`)
+- [ ] Examples (HTML/JS samples in `examples/` folders)
 - [ ] References (skill reference documents in `references/` folders)
-- [ ] Documentation (README.md, CONTRIBUTING.md, SECURITY.md)
-- [ ] Configuration (plugin.json, .markdownlint.json, .htmlhintrc, .erb_lint.yml, .yamllint.yml)
+- [ ] Documentation (README.md, CLAUDE.md, CHANGELOG.md)
+- [ ] Configuration (plugin.json, marketplace.json, .markdownlint.json, .htmlhintrc, .yamllint.yml)
 - [ ] Issue/PR templates
 - [ ] Other (please specify):
 
@@ -54,8 +53,8 @@ Fixes # (issue)
 **Test Steps**:
 
 1. <!-- e.g., Load plugin with `claude --plugin-dir .` -->
-2. <!-- e.g., Run command `/chartjs-expert:component navbar` -->
-3. <!-- e.g., Verify generated HTML is valid Bootstrap 5.3.x -->
+2. <!-- e.g., Run command `/chartjs:component bar` -->
+3. <!-- e.g., Verify generated chart code uses Chart.js v4.5.1 patterns -->
 4. <!-- etc. -->
 
 ## Checklist
@@ -74,18 +73,18 @@ Fixes # (issue)
 
 ### Linting
 
-- [ ] I have run `markdownlint` and fixed all issues
-- [ ] I have run `npx htmlhint` on any HTML example files
-- [ ] I have run `erb_lint --lint-all` on any ERB example files
-- [ ] I have run `uvx yamllint` on any YAML configuration files
-- [ ] I have verified special HTML elements are properly closed (`<p>`, `<img>`, `<example>`, `<commentary>`)
+- [ ] I have run `markdownlint '**/*.md'` and fixed all issues
+- [ ] I have run `npx htmlhint 'plugins/**/examples/*.html'` on HTML examples
+- [ ] I have run `yamllint -c .yamllint.yml` on YAML files
+- [ ] I have run `actionlint` on workflow files (if modified)
+- [ ] I have run `lychee --cache '**/*.md'` for broken links
 
-### Bootstrap Compatibility
+### Chart.js Compatibility
 
-- [ ] Changes align with Bootstrap 5.3.8 documentation
-- [ ] Bootstrap Icons references use version 1.13.x conventions
-- [ ] Generated HTML/CSS uses valid Bootstrap 5.3.x classes
-- [ ] Responsive breakpoints use correct Bootstrap values (sm/md/lg/xl/xxl)
+- [ ] Changes align with Chart.js v4.5.1 documentation
+- [ ] Tree-shaking patterns used for production code examples
+- [ ] Required components registered (Controllers, Elements, Scales, Plugins)
+- [ ] Framework integrations follow library conventions (react-chartjs-2, vue-chartjs, etc.)
 
 ### Accessibility
 
@@ -110,23 +109,23 @@ Fixes # (issue)
 <details>
 <summary><strong>Skills</strong> (click to expand)</summary>
 
-- [ ] Description uses third-person with specific trigger phrases
-- [ ] SKILL.md is 1,000-2,200 words (progressive disclosure)
+- [ ] Description starts with "This skill should be used when..." with trigger phrases
+- [ ] SKILL.md contains core knowledge (not exhaustive documentation)
 - [ ] Detailed content is in `references/` subdirectory
-- [ ] Examples in `examples/` folder are valid HTML/CSS/JS
-- [ ] Content aligns with official Bootstrap documentation
-- [ ] Skill demonstrates Bootstrap best practices
+- [ ] Examples in `examples/` folder are valid HTML/JS
+- [ ] Content aligns with official Chart.js v4.5.1 documentation
+- [ ] Skill demonstrates Chart.js best practices
 
 </details>
 
 <details>
 <summary><strong>Agent</strong> (click to expand)</summary>
 
-- [ ] Agent includes 3-4 `<example>` blocks
+- [ ] Agent includes 2-4 `<example>` blocks
 - [ ] Examples demonstrate triggering conditions clearly
-- [ ] System prompt is clear and focused on Bootstrap expertise
+- [ ] System prompt is clear and focused on Chart.js expertise
 - [ ] Tool list is minimal and appropriate
-- [ ] YAML frontmatter includes required fields (name, description, model, color)
+- [ ] YAML frontmatter includes required fields (name, description, model, color, tools)
 
 </details>
 
@@ -134,8 +133,8 @@ Fixes # (issue)
 
 - [ ] I have tested the plugin locally with `claude --plugin-dir .`
 - [ ] I have tested the full workflow (if applicable)
-- [ ] I have verified generated Bootstrap code renders correctly
-- [ ] I have tested in a clean repository (not my development repo)
+- [ ] I have verified generated Chart.js code works correctly
+- [ ] I have tested in a clean environment (not my development setup)
 
 ### Version Management (if applicable)
 
@@ -144,7 +143,7 @@ Fixes # (issue)
 
 ## Screenshots (if applicable)
 
-<!-- Add screenshots to help explain your changes - especially useful for Bootstrap UI components -->
+<!-- Add screenshots to help explain your changes - especially useful for chart examples -->
 
 ## Additional Notes
 
@@ -166,7 +165,7 @@ Fixes # (issue)
 
 - [ ] All CI checks pass
 - [ ] Documentation is accurate and complete
-- [ ] Changes align with Bootstrap 5.3.8 best practices
+- [ ] Changes align with Chart.js v4.5.1 patterns
 - [ ] No security vulnerabilities introduced
 - [ ] Breaking changes are clearly documented
 - [ ] Labels are appropriate for the change type
