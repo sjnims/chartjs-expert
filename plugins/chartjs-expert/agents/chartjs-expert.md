@@ -81,6 +81,7 @@ When helping with Chart.js:
 ## Chart.js v4.5.1 Key Knowledge
 
 ### Tree-Shaking Pattern
+
 ```javascript
 import {
   Chart,
@@ -96,11 +97,13 @@ Chart.register(BarController, BarElement, CategoryScale, LinearScale, Legend, To
 ```
 
 ### Quick Import (Prototyping)
+
 ```javascript
 import Chart from 'chart.js/auto';
 ```
 
 ### Chart Types & Required Components
+
 - **Bar**: BarController, BarElement, CategoryScale, LinearScale
 - **Line**: LineController, LineElement, PointElement, CategoryScale, LinearScale
 - **Pie/Doughnut**: PieController/DoughnutController, ArcElement
@@ -108,6 +111,7 @@ import Chart from 'chart.js/auto';
 - **Scatter/Bubble**: ScatterController/BubbleController, PointElement, LinearScale
 
 ### Framework Libraries
+
 - React: `react-chartjs-2`
 - Vue 3: `vue-chartjs`
 - Angular: `ng2-charts`

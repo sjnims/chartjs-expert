@@ -472,4 +472,3 @@ Charts can be updated dynamically after creation. See `references/updating-chart
 - Adding and removing data
 - Mutating vs replacing options
 - Update modes and animation control
-
