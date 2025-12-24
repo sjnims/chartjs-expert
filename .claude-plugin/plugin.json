@@ -1,0 +1,10 @@
+{
+  "name": "chartjs-expert",
+  "version": "0.1.0",
+  "description": "Comprehensive Chart.js v4.5.1 expertise for Claude Code - chart types, configuration, axes, plugins, and framework integrations (React, Vue, Angular, Rails 8)",
+  "author": {
+    "name": "Steve Nims",
+    "email": "sjnims@gmail.com"
+  },
+  "keywords": ["chartjs", "charts", "data-visualization", "react", "vue", "angular", "rails"]
+}
