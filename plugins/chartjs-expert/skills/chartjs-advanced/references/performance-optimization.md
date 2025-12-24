@@ -79,6 +79,8 @@ Decimation only works when ALL conditions are met:
 5. Dataset object is mutable
 6. Point count exceeds threshold
 
+**Note**: If any requirement is not met, decimation silently skips - the chart renders with all data points. Check the browser console for no errors but slow performance to diagnose missing requirements.
+
 ```javascript
 // Complete decimation example
 new Chart(ctx, {

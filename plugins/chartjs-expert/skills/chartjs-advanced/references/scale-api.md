@@ -142,9 +142,11 @@ The `Chart.Scale` base class provides these utility functions:
 |--------|-------------|
 | `isHorizontal()` | Returns true if the scale is horizontal |
 | `getTicks()` | Returns the scale tick objects (`{label, major}`) |
-| `getMinMax(canStack)` | Get min/max values from datasets |
+| `getMinMax(canStack)` | Get min/max values from datasets (see Log2 example below) |
 | `getPixelForDecimal(decimal)` | Convert 0-1 decimal to pixel position |
 | `getDecimalForPixel(pixel)` | Convert pixel position to 0-1 decimal |
+
+**Using `getMinMax()`**: Call in `determineDataLimits()` to get data bounds. Pass `true` to allow stacking consideration. See the Log2 scale example for typical usage pattern.
 
 ## Registration
 
