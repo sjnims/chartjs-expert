@@ -8,7 +8,7 @@ This is a Claude Code plugin marketplace providing Chart.js v4.5.1 expertise. Th
 
 ## Repository Structure
 
-```
+```text
 .claude-plugin/
 └── marketplace.json              # Marketplace manifest (points to plugins/)
 
@@ -24,6 +24,15 @@ plugins/chartjs-expert/
 ```
 
 Skill domains: overview, chart-types, configuration, axes, plugins, developers, integrations, animations, tooltips, advanced.
+
+## Architecture
+
+**Dual-layer structure:**
+
+- `/.claude-plugin/marketplace.json` - Top-level manifest listing available plugins
+- `/plugins/chartjs-expert/.claude-plugin/plugin.json` - Individual plugin manifest
+
+The marketplace can host multiple plugins. Each plugin is self-contained with its own manifest, skills, commands, and agents.
 
 ## Linting Commands
 
@@ -43,6 +52,16 @@ lychee --cache '**/*.md'
 # GitHub Actions
 actionlint
 ```
+
+## Local Development
+
+Test the plugin locally:
+
+```bash
+claude --plugin-dir .
+```
+
+This loads the marketplace and all plugins for testing skills, commands, and agent behavior.
 
 ## Plugin Component Rules
 
@@ -71,15 +90,30 @@ When editing plugin components, follow these conventions:
 - `model: inherit` uses the parent model
 - `tools` is a comma-separated list (e.g., `Read, Write, Edit, Grep, Glob, Bash`)
 
+## Version Management
+
+Version is tracked in two places that must stay synchronized:
+
+- `/.claude-plugin/marketplace.json` - `plugins[0].version`
+- `/plugins/chartjs-expert/.claude-plugin/plugin.json` - `version`
+
+Update both when releasing new versions. The project uses semantic versioning and maintains a CHANGELOG.md using Keep a Changelog format.
+
 ## CI Workflows
 
-PRs run linting automatically based on changed file types. Key workflows:
+PRs run linting automatically based on changed file types:
 
 - `markdownlint.yml` - Markdown files
 - `html-lint.yml` - HTML example files
 - `yaml-lint.yml` - YAML config files
 - `links.yml` - Broken link checking (weekly + on MD changes)
 - `component-validation.yml` - Claude-powered validation of plugin components
+
+## Conventions
+
+**Commits:** Conventional Commits format (`feat:`, `fix:`, `docs:`, `chore:`, etc.)
+
+**Branches:** `docs/description`, `feat/description`, `fix/description`, `chore/description`
 
 ## Chart.js Reference
 
