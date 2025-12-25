@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Claude Code plugin providing Chart.js v4.5.1 expertise with 10 skills, 1 command, and 1 agent.
+This is a Claude Code plugin providing Chart.js v4.5.1 expertise with 11 skills, 1 command, and 1 agent.
 
 ## Repository Structure
 
@@ -18,7 +18,7 @@ agents/
 commands/
 └── component.md                  # /chartjs:component command
 
-skills/                           # 10 specialized knowledge skills
+skills/                           # 11 specialized knowledge skills
 └── chartjs-*/                    # Each skill directory contains:
     ├── SKILL.md                  # Core knowledge (required)
     ├── references/               # Deep-dive documentation (optional)
