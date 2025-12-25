@@ -274,10 +274,81 @@ onUnmounted(() => {
 </script>
 ```
 
-## Data Fetching with Async Setup
+## Data Fetching
+
+### Vanilla Vue 3
 
 ```vue
 <!-- components/FetchedChart.vue -->
+<template>
+  <div>
+    <div v-if="loading" class="text-gray-500">Loading chart...</div>
+    <div v-else-if="error" class="text-red-500">Error: {{ error }}</div>
+    <Bar v-else :data="chartData" :options="chartOptions" />
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref, computed, onMounted } from 'vue';
+import { Bar } from 'vue-chartjs';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip
+} from 'chart.js';
+
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip);
+
+interface SalesData {
+  month: string;
+  revenue: number;
+}
+
+const data = ref<SalesData[]>([]);
+const loading = ref(true);
+const error = ref<string | null>(null);
+
+onMounted(async () => {
+  try {
+    const response = await fetch('/api/sales');
+    if (!response.ok) throw new Error('Failed to fetch');
+    data.value = await response.json();
+  } catch (err) {
+    error.value = err instanceof Error ? err.message : 'Unknown error';
+  } finally {
+    loading.value = false;
+  }
+});
+
+const chartData = computed(() => ({
+  labels: data.value.map((d) => d.month),
+  datasets: [
+    {
+      label: 'Revenue',
+      data: data.value.map((d) => d.revenue),
+      backgroundColor: 'rgba(54, 162, 235, 0.5)',
+      borderColor: 'rgb(54, 162, 235)',
+      borderWidth: 1
+    }
+  ]
+}));
+
+const chartOptions = {
+  responsive: true,
+  plugins: {
+    title: { display: true, text: 'Monthly Revenue' }
+  }
+};
+</script>
+```
+
+### Nuxt 3 (useFetch)
+
+```vue
+<!-- components/FetchedChart.vue (Nuxt 3) -->
 <template>
   <div>
     <div v-if="pending" class="text-gray-500">Loading chart...</div>
@@ -305,7 +376,7 @@ interface SalesData {
   revenue: number;
 }
 
-// Using useFetch composable (Nuxt) or custom fetch
+// Nuxt 3 auto-imported composable
 const { data, pending, error } = await useFetch<SalesData[]>('/api/sales');
 
 const chartData = computed(() => ({

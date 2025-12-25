@@ -391,6 +391,22 @@ export class LiveChartComponent implements OnInit, OnDestroy {
 
 ## Data Fetching with HttpClient
 
+### App Configuration (Angular 17+)
+
+```typescript
+// app.config.ts
+import { ApplicationConfig } from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideHttpClient()
+  ]
+};
+```
+
+### Service
+
 ```typescript
 // services/chart-data.service.ts
 import { Injectable, inject } from '@angular/core';
@@ -423,6 +439,8 @@ export class ChartDataService {
   }
 }
 ```
+
+### Component
 
 ```typescript
 // components/fetched-chart.component.ts
