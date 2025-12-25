@@ -74,4 +74,4 @@ for production code (manual component registration rather than `chart.js/auto`).
 
 ## License
 
-MIT
+[MIT](LICENSE)
