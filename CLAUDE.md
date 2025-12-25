@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Claude Code plugin providing Chart.js v4.5.1 expertise with 11 skills, 1 command, and 1 agent.
+This is a Claude Code plugin providing Chart.js v4.5.1 expertise with 12 skills, 1 command, and 1 agent.
 
 ## Repository Structure
 
@@ -25,7 +25,7 @@ skills/                           # 11 specialized knowledge skills
     └── examples/                 # Working code examples (optional)
 ```
 
-Skill domains: overview, chart-types, configuration, axes, plugins, developers, integrations, animations, tooltips, advanced.
+Skill domains: overview, chart-types, configuration, axes, animations, tooltips, plugins, integrations, developers, advanced, accessibility, quickref.
 
 ## Linting Commands
 
@@ -96,6 +96,22 @@ PRs run linting automatically based on changed file types:
 - `yaml-lint.yml` - YAML config files
 - `links.yml` - Broken link checking (weekly + on MD changes)
 - `component-validation.yml` - Claude-powered validation of plugin components
+- `claude-pr-review.yml` - Claude-powered PR review
+- `validate-workflows.yml` - GitHub Actions syntax validation
+- `semantic-labeler.yml` - Auto-labeling PRs by path
+- `ci-failure-analysis.yml` - Claude analysis of CI failures
+- `weekly-maintenance.yml` - Scheduled maintenance tasks
+- `stale.yml` - Stale issue/PR management
+- `greet.yml` - New contributor greeting
+- `sync-labels.yml` - Sync labels from .github/labels.yml
+
+## Linting Configuration
+
+| Linter | Config File |
+|--------|-------------|
+| markdownlint | `.markdownlint.json` |
+| htmlhint | `.htmlhintrc` |
+| yamllint | `.yamllint.yml` |
 
 ## Conventions
 
