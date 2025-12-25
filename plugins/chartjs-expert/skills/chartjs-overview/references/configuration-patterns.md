@@ -203,6 +203,7 @@ options: {
   responsive: true,              // Chart resizes with container (default: true)
   maintainAspectRatio: true,    // Maintain aspect ratio (default: true)
   aspectRatio: 2,               // Width/height ratio (default: 2, radial: 1)
+  resizeDelay: 0,               // Debounce resize updates in ms (default: 0)
 
   // Callback when chart resizes
   onResize: (chart, size) => {
@@ -255,15 +256,29 @@ Chart.js gets dimensions from the canvas's **parent container**:
   <canvas id="chart1"></canvas>
 </div>
 
-<!-- Good: Chart fills grid column -->
-<div style="display: grid; grid-template-columns: 1fr 1fr;">
-  <div><canvas id="chart2"></canvas></div>
-  <div><canvas id="chart3"></canvas></div>
-</div>
-
 <!-- Bad: No container sizing -->
 <canvas id="chart4"></canvas>
 ```
+
+### Flexbox/Grid Layout
+
+When using flexbox or grid, set `min-width: 0` on chart containers to prevent overflow:
+
+```html
+<!-- Grid layout with proper sizing -->
+<div style="display: grid; grid-template-columns: 1fr 1fr;">
+  <div style="min-width: 0;"><canvas id="chart1"></canvas></div>
+  <div style="min-width: 0;"><canvas id="chart2"></canvas></div>
+</div>
+
+<!-- Flexbox layout with proper sizing -->
+<div style="display: flex; gap: 20px;">
+  <div style="flex: 1; min-width: 0;"><canvas id="chart3"></canvas></div>
+  <div style="flex: 1; min-width: 0;"><canvas id="chart4"></canvas></div>
+</div>
+```
+
+**Why `min-width: 0`?** Flex and grid items have an implicit `min-width: auto` which prevents them from shrinking below their content size. Charts can cause container overflow without this fix.
 
 ### Responsive Font Sizes
 
