@@ -1,5 +1,12 @@
 # Chart.js Expert Plugin for Claude Code
 
+[![Markdown Lint](https://github.com/sjnims/chartjs-expert/actions/workflows/markdownlint.yml/badge.svg)](https://github.com/sjnims/chartjs-expert/actions/workflows/markdownlint.yml)
+[![HTML Lint](https://github.com/sjnims/chartjs-expert/actions/workflows/html-lint.yml/badge.svg)](https://github.com/sjnims/chartjs-expert/actions/workflows/html-lint.yml)
+[![YAML Lint](https://github.com/sjnims/chartjs-expert/actions/workflows/yaml-lint.yml/badge.svg)](https://github.com/sjnims/chartjs-expert/actions/workflows/yaml-lint.yml)
+[![Links](https://github.com/sjnims/chartjs-expert/actions/workflows/links.yml/badge.svg)](https://github.com/sjnims/chartjs-expert/actions/workflows/links.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Chart.js](https://img.shields.io/badge/Chart.js-v4.5.1-ff6384.svg)](https://www.chartjs.org/)
+
 A comprehensive Claude Code plugin providing expert-level assistance for Chart.js v4.5.1.
 
 ## Features
