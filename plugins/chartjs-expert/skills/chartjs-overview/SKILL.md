@@ -309,6 +309,7 @@ new Chart(ctx, {
     responsive: true,           // Resize with container (default: true)
     maintainAspectRatio: true,  // Keep aspect ratio (default: true)
     aspectRatio: 2,             // Width/height ratio (default: 2, radial: 1)
+    resizeDelay: 0,             // Debounce resize updates in ms (default: 0)
 
     // Callback when chart resizes
     onResize: (chart, size) => {
@@ -323,6 +324,15 @@ new Chart(ctx, {
 ```html
 <div style="width: 80%; max-width: 1200px;">
   <canvas id="myChart"></canvas>
+</div>
+```
+
+**Flexbox/Grid containers:** Set `min-width: 0` on flex/grid children to prevent overflow:
+
+```html
+<div style="display: grid; grid-template-columns: 1fr 1fr;">
+  <div style="min-width: 0;"><canvas id="chart1"></canvas></div>
+  <div style="min-width: 0;"><canvas id="chart2"></canvas></div>
 </div>
 ```
 
