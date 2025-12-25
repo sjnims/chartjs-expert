@@ -12,14 +12,15 @@
 # GitHub configuration (workflows, templates, dependabot)
 /.github/ @sjnims
 
-# Plugin core
-/plugins/chartjs-expert/ @sjnims
+# Plugin components
+/agents/ @sjnims
+/commands/ @sjnims
+/skills/ @sjnims
 
 # Critical documentation
 /README.md @sjnims
 /CLAUDE.md @sjnims
 /SECURITY.md @sjnims
 
-# Manifests (version management)
-/plugins/chartjs-expert/.claude-plugin/plugin.json @sjnims
-/.claude-plugin/marketplace.json @sjnims
+# Plugin manifest
+/.claude-plugin/plugin.json @sjnims

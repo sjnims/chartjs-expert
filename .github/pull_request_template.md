@@ -19,13 +19,13 @@
 
 <!-- Mark all that apply -->
 
-- [ ] Skills (`plugins/chartjs-expert/skills/chartjs-*`)
+- [ ] Skills (`skills/chartjs-*`)
 - [ ] Agent (`chartjs-expert`)
 - [ ] Commands (`/chartjs:component`)
 - [ ] Examples (HTML/JS samples in `examples/` folders)
 - [ ] References (skill reference documents in `references/` folders)
 - [ ] Documentation (README.md, CLAUDE.md, CHANGELOG.md)
-- [ ] Configuration (plugin.json, marketplace.json, .markdownlint.json, .htmlhintrc, .yamllint.yml)
+- [ ] Configuration (plugin.json, .markdownlint.json, .htmlhintrc, .yamllint.yml)
 - [ ] Issue/PR templates
 - [ ] Other (please specify):
 
@@ -74,7 +74,7 @@ Fixes # (issue)
 ### Linting
 
 - [ ] I have run `markdownlint '**/*.md'` and fixed all issues
-- [ ] I have run `npx htmlhint 'plugins/**/examples/*.html'` on HTML examples
+- [ ] I have run `npx htmlhint 'skills/**/examples/*.html'` on HTML examples
 - [ ] I have run `yamllint -c .yamllint.yml` on YAML files
 - [ ] I have run `actionlint` on workflow files (if modified)
 - [ ] I have run `lychee --cache '**/*.md'` for broken links
@@ -138,7 +138,7 @@ Fixes # (issue)
 
 ### Version Management (if applicable)
 
-- [ ] I have updated version in `plugins/chartjs-expert/.claude-plugin/plugin.json`
+- [ ] I have updated version in `.claude-plugin/plugin.json`
 - [ ] I have updated CHANGELOG.md with relevant changes
 
 ## Screenshots (if applicable)

@@ -1,7 +1,7 @@
 # Contributing to Chart.js Expert Plugin
 
 Thank you for your interest in contributing! This document provides
-guidelines for contributing to this Claude Code plugin marketplace.
+guidelines for contributing to this Claude Code plugin.
 
 ## Code of Conduct
 
@@ -21,15 +21,20 @@ By participating, you agree to uphold this code.
 ## Plugin Structure
 
 ```text
-plugins/chartjs-expert/
-├── .claude-plugin/plugin.json    # Plugin manifest
-├── agents/chartjs-expert.md      # Proactive agent
-├── commands/component.md         # /chartjs:component command
-└── skills/                       # Knowledge skills
-    └── chartjs-*/                # Each skill has:
-        ├── SKILL.md              # Core knowledge (required)
-        ├── references/           # Deep-dive documentation (optional)
-        └── examples/             # Working code samples (optional)
+.claude-plugin/
+└── plugin.json                   # Plugin manifest
+
+agents/
+└── chartjs-expert.md             # Proactive agent
+
+commands/
+└── component.md                  # /chartjs:component command
+
+skills/                           # Knowledge skills
+└── chartjs-*/                    # Each skill has:
+    ├── SKILL.md                  # Core knowledge (required)
+    ├── references/               # Deep-dive documentation (optional)
+    └── examples/                 # Working code samples (optional)
 ```
 
 See [CLAUDE.md](CLAUDE.md) for detailed component conventions.
@@ -69,10 +74,10 @@ Run these before submitting:
 markdownlint '**/*.md'
 
 # HTML examples
-npx htmlhint 'plugins/**/examples/*.html'
+npx htmlhint 'skills/**/examples/*.html'
 
 # YAML files
-yamllint -c .yamllint.yml .github/ .claude-plugin/ 'plugins/*/.claude-plugin/'
+yamllint -c .yamllint.yml .github/ .claude-plugin/
 
 # Broken links
 lychee --cache '**/*.md'
