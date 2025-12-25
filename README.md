@@ -11,7 +11,7 @@ A comprehensive Claude Code plugin providing expert-level assistance for Chart.j
 
 ## Features
 
-- **10 Specialized Skills**: Deep knowledge across all Chart.js domains
+- **11 Specialized Skills**: Deep knowledge across all Chart.js domains
 - **Interactive Command**: `/chartjs:component` - Generate chart code for any framework
 - **Proactive Agent**: Automatically assists when working with charts or data visualization
 
@@ -29,6 +29,7 @@ A comprehensive Claude Code plugin providing expert-level assistance for Chart.j
 | `chartjs-integrations` | React, Vue, Angular, Rails 8 (Hotwire/Stimulus), vanilla JS |
 | `chartjs-developers` | Chart instance API, extending Chart.js, TypeScript support |
 | `chartjs-advanced` | Gradients, custom chart types, custom scales, programmatic control |
+| `chartjs-accessibility` | WCAG compliance, ARIA labels, colorblind palettes, keyboard navigation |
 
 ## Command
 
