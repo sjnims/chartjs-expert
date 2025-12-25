@@ -18,14 +18,29 @@ Namespace: `options.plugins.tooltip`
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | `enabled` | boolean | true | Enable/disable canvas tooltips |
+| `external` | function | null | External tooltip handler function |
 | `mode` | string | 'nearest' | Interaction mode (point, nearest, index, dataset) |
 | `intersect` | boolean | true | Require mouse directly over element |
-| `position` | string | 'average' | Tooltip position (average, nearest) |
+| `position` | string | 'average' | Tooltip position (average, nearest, or custom) |
 | `backgroundColor` | Color | 'rgba(0,0,0,0.8)' | Background color |
 | `titleColor` | Color | '#fff' | Title text color |
 | `bodyColor` | Color | '#fff' | Body text color |
 | `borderColor` | Color | 'rgba(0,0,0,0)' | Border color |
 | `borderWidth` | number | 0 | Border width |
+| `cornerRadius` | number | 6 | Radius of tooltip corner curves |
+| `caretSize` | number | 5 | Size of tooltip arrow in pixels |
+| `caretPadding` | number | 2 | Distance from arrow to tooltip point |
+| `displayColors` | boolean | true | Show color boxes in tooltip |
+| `boxWidth` | number | bodyFont.size | Width of color box |
+| `boxHeight` | number | bodyFont.size | Height of color box |
+| `boxPadding` | number | 1 | Padding between color box and text |
+| `usePointStyle` | boolean | false | Use point style instead of color box |
+| `xAlign` | string | undefined | Tooltip caret X position (left, center, right) |
+| `yAlign` | string | undefined | Tooltip caret Y position (top, center, bottom) |
+| `itemSort` | function | undefined | Sort tooltip items callback |
+| `filter` | function | undefined | Filter tooltip items callback |
+| `rtl` | boolean | undefined | Render tooltip right-to-left |
+| `textDirection` | string | canvas default | Force text direction ('rtl' or 'ltr') |
 
 ### Basic Example
 
@@ -58,11 +73,22 @@ Namespace: `options.plugins.tooltip.callbacks`
 
 | Callback | Parameters | Returns | Description |
 |----------|------------|---------|-------------|
+| `beforeTitle` | TooltipItem[] | string\|string[] | Text before title |
 | `title` | TooltipItem[] | string\|string[] | Tooltip title |
+| `afterTitle` | TooltipItem[] | string\|string[] | Text after title |
+| `beforeBody` | TooltipItem[] | string\|string[] | Text before body section |
+| `beforeLabel` | TooltipItem | string\|string[] | Text before individual label |
 | `label` | TooltipItem | string\|string[] | Individual item label |
+| `afterLabel` | TooltipItem | string\|string[] | Text after individual label |
+| `afterBody` | TooltipItem[] | string\|string[] | Text after body section |
+| `beforeFooter` | TooltipItem[] | string\|string[] | Text before footer |
 | `footer` | TooltipItem[] | string\|string[] | Tooltip footer |
+| `afterFooter` | TooltipItem[] | string\|string[] | Text after footer |
 | `labelColor` | TooltipItem | object | Color box styling |
 | `labelTextColor` | TooltipItem | Color | Label text color |
+| `labelPointStyle` | TooltipItem | object | Point style when usePointStyle is true |
+
+Per-dataset callbacks (`beforeLabel`, `label`, `afterLabel`, `labelColor`, `labelTextColor`, `labelPointStyle`) can be overridden in `data.datasets[].tooltip.callbacks`.
 
 ### Format Label with Currency
 
@@ -391,6 +417,48 @@ datasets: [{
 }]
 ```
 
+## Custom Position Modes
+
+Define custom tooltip positioning by adding to `Chart.Tooltip.positioners`.
+
+```javascript
+import { Tooltip } from 'chart.js';
+
+// Register custom positioner
+Tooltip.positioners.topLeft = function(elements, eventPosition) {
+  const tooltip = this;
+  return {
+    x: 0,
+    y: 0,
+    xAlign: 'left',
+    yAlign: 'top'
+  };
+};
+
+// Use custom position
+new Chart(ctx, {
+  type: 'bar',
+  data: data,
+  options: {
+    plugins: {
+      tooltip: {
+        position: 'topLeft'
+      }
+    }
+  }
+});
+```
+
+### TypeScript Declaration
+
+```typescript
+declare module 'chart.js' {
+  interface TooltipPositionerMap {
+    topLeft: TooltipPositionerFunction<ChartType>;
+  }
+}
+```
+
 ## Framework Integration
 
 ### React
@@ -441,5 +509,12 @@ const chartOptions = {
 
 ## Additional Resources
 
-- See `examples/html-tooltip.md` for complete HTML tooltip implementation
-- See `examples/conditional-tooltips.md` for showing tooltips conditionally
+### References
+
+- `references/tooltip-model.md` - Complete tooltip model interface for external handlers
+- `references/callback-signatures.md` - Full callback reference with per-dataset overrides
+
+### Examples
+
+- `examples/html-tooltip.html` - Complete HTML tooltip implementation
+- `examples/conditional-tooltips.html` - Filter, sort, and conditional styling examples
