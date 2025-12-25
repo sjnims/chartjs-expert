@@ -522,5 +522,6 @@ const chartOptions = {
 ## Additional Resources
 
 - See `references/easing-functions.md` for visual easing function guide
-- See `examples/progressive-animation.md` for progressive line reveal example
-- See `examples/staggered-bars.md` for staggered bar animation example
+- See `references/animation-patterns.md` for advanced animation patterns
+- See `examples/progressive-animation.html` for progressive line reveal example
+- See `examples/staggered-bars.html` for staggered bar animation example
