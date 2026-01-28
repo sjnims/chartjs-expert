@@ -100,7 +100,6 @@ PRs run linting automatically based on changed file types:
 - `validate-workflows.yml` - GitHub Actions syntax validation
 - `semantic-labeler.yml` - Auto-labeling PRs by path
 - `ci-failure-analysis.yml` - Claude analysis of CI failures
-- `weekly-maintenance.yml` - Scheduled maintenance tasks
 - `stale.yml` - Stale issue/PR management
 - `greet.yml` - New contributor greeting
 - `sync-labels.yml` - Sync labels from .github/labels.yml
